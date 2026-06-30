@@ -1,5 +1,5 @@
 package es.api.findora.domain.model;
 
-public enum UserStatus {
+public enum StatusUser {
     ACTIVE, BANNED, DISACTIVE
 }
