@@ -11,7 +11,7 @@ import java.util.List;
 
 @Data
 @Entity(name = "USER")
-public class User {
+public class UserEntity {
 
     @Id
     private Long id;
@@ -50,34 +50,34 @@ public class User {
     private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "commentOwner")
-    private List<Comment> comments;
+    private List<CommentEntity> comments;
 
     @OneToMany(mappedBy = "reportOwner")
-    private List<Report> reports;
+    private List<ReportEntity> reports;
 
     @OneToMany(mappedBy = "responseOwner")
-    private List<Response> responses;
+    private List<ResponseEntity> responses;
 
     @OneToMany(mappedBy = "creator")
-    private List<Location> locationsCreated;
+    private List<LocationEntity> locationsCreated;
 
     @OneToMany(mappedBy = "postOwner")
-    private List<Post> postsCreatedByThisUser;
+    private List<PostEntity> postsCreatedByThisUser;
 
     @OneToMany(mappedBy = "reactCommentUser")
-    private List<ReactionComment> reactionsComments;
+    private List<ReactionCommentEntity> reactionsComments;
 
     @OneToMany(mappedBy = "reactPostUser")
-    private List<ReactionPost> reactionsPosts;
+    private List<ReactionPostEntity> reactionsPosts;
 
     @OneToMany(mappedBy = "reactResponseUser")
-    private List<ReactionResponse> reactionsResponses;
+    private List<ReactionResponseEntity> reactionsResponses;
 
     @OneToMany(mappedBy = "originUser")
-    private List<SocialRelation> socialRelationsOriginUser;
+    private List<SocialRelationEntity> socialRelationsOriginUser;
 
     @OneToMany(mappedBy = "targetUser")
-    private List<SocialRelation> socialRelationsTargetUser;
+    private List<SocialRelationEntity> socialRelationsTargetUser;
 
 
 }

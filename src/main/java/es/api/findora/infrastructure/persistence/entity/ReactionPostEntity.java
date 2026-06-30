@@ -9,17 +9,17 @@ import java.time.LocalDateTime;
 @Table(name = "REACTION_POST")
 @Data
 @IdClass(ReactionPostId.class)
-public class ReactionPost {
+public class ReactionPostEntity {
 
     @Id
     @ManyToOne
     @JoinColumn(name = "post_id")
-    private User reactPostUser;
+    private UserEntity reactPostUser;
 
     @Id
     @ManyToOne
     @JoinColumn(name = "post_id")
-    private Post reactedPost;
+    private PostEntity reactedPost;
 
     @Column(name = "type")
     private TypeReactionComment type;

@@ -7,7 +7,7 @@ import lombok.Data;
 @Table(name = "LINK")
 @IdClass(LinkId.class)
 @Data
-public class Link {
+public class LinkEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,7 +16,7 @@ public class Link {
     @Id
     @ManyToOne
     @JoinColumn(name = "post_id")
-    private Post linkPost;
+    private PostEntity linkPost;
 
     @Column(name = "name")
     private String name;

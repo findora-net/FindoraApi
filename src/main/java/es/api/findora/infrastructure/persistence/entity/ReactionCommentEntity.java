@@ -9,17 +9,17 @@ import java.time.LocalDateTime;
 @Data
 @Table(name = "REACTION_COMMENT")
 @IdClass(ReactionCommentId.class)
-public class ReactionComment{
+public class ReactionCommentEntity {
 
     @Id
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User reactCommentUser;
+    private UserEntity reactCommentUser;
 
     @Id
     @ManyToOne
     @JoinColumn(name = "comment_id")
-    private Comment reactedComment;
+    private CommentEntity reactedComment;
 
     @Column(name = "type")
     private Enum<TypeReactionComment> type;

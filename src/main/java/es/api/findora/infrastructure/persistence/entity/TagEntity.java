@@ -10,7 +10,7 @@ import java.util.List;
 
 @Entity(name = "Tag")
 @Data
-public class Tag {
+public class TagEntity {
 
     @Id
     private Long id;
@@ -25,5 +25,5 @@ public class Tag {
     private Integer value;
 
     @OneToMany(mappedBy = "tag")
-    private List<TagPost> posts;
+    private List<TagPostEntity> posts;
 }

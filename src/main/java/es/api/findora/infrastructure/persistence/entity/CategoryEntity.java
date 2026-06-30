@@ -8,7 +8,7 @@ import java.util.List;
 @Entity
 @Data
 @Table(name = "CATEGORY")
-public class Category {
+public class CategoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,6 +17,6 @@ public class Category {
     private String name;
 
     @OneToMany(mappedBy = "categoryPost")
-    private List<Post> postsUsesThisCategory;
+    private List<PostEntity> postsUsesThisCategory;
 
 }

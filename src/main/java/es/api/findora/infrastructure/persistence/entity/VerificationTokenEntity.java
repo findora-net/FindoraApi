@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 @Entity(name = "VERIFICATION_TOKEN")
 @Data
-public class VerificationToken {
+public class VerificationTokenEntity {
 
     @Id
     private Long id;

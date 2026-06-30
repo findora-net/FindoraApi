@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "REPORT")
-public class Report {
+public class ReportEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +26,7 @@ public class Report {
 
     @ManyToOne
     @JoinColumn(name = "created_by")
-    private User reportOwner;
+    private UserEntity reportOwner;
 
     @Column(name = "created_at")
     private Integer createdAt;

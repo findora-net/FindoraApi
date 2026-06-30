@@ -9,7 +9,7 @@ import java.util.List;
 @Table(name = "LOCATION")
 @Data
 @Entity
-public class Location {
+public class LocationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,12 +28,12 @@ public class Location {
 
     @ManyToOne
     @JoinColumn(name = "created_by")
-    private User creator;
+    private UserEntity creator;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "locationPost")
-    private List<Post> postsIncludesThisLocation;
+    private List<PostEntity> postsIncludesThisLocation;
 
 }

@@ -6,14 +6,14 @@ import lombok.Data;
 @Data
 @Entity(name = "TAG_POST")
 @IdClass(TagPostId.class)
-public class TagPost {
+public class TagPostEntity {
     @Id
     @ManyToOne
     @JoinColumn(name = "post_id")
-    private Post postTags;
+    private PostEntity postTags;
 
     @Id
     @ManyToOne
     @JoinColumn(name = "tag_id")
-    private Tag tag;
+    private TagEntity tag;
 }

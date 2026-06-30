@@ -1,6 +1,5 @@
 package es.api.findora.infrastructure.persistence.entity;
 
-import es.api.findora.infrastructure.persistence.entity.ReactionResponse;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -8,23 +7,23 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name = "RESPONSE")
+@Table(name = "COMMENT")
 @Data
-public class Response {
+public class CommentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "comment_id")
-    private Comment commentResponse;
+    @JoinColumn(name = "post_id")
+    private PostEntity commentedPost;
 
     @ManyToOne
     @JoinColumn(name = "created_by")
-    private User responseOwner;
+    private UserEntity commentOwner;
 
-    @Column(name="text")
+    @Column(name = "text")
     private String text;
 
     @Column(name = "created_at")
@@ -36,7 +35,11 @@ public class Response {
     @Column(name = "rate")
     private Integer rate;
 
-    @OneToMany(mappedBy = "reactResponse")
-    private List<ReactionResponse> reactions;
+    @OneToMany(mappedBy = "reactedComment")
+    private List<ReactionCommentEntity> reactions;
+
+    @OneToMany(mappedBy = "commentResponse")
+    private List<ResponseEntity> responses;
+
 
 }

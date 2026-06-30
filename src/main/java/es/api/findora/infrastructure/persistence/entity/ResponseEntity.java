@@ -7,23 +7,23 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name = "COMMENT")
+@Table(name = "RESPONSE")
 @Data
-public class Comment {
+public class ResponseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "post_id")
-    private Post commentedPost;
+    @JoinColumn(name = "comment_id")
+    private CommentEntity commentResponse;
 
     @ManyToOne
     @JoinColumn(name = "created_by")
-    private User commentOwner;
+    private UserEntity responseOwner;
 
-    @Column(name = "text")
+    @Column(name="text")
     private String text;
 
     @Column(name = "created_at")
@@ -35,11 +35,7 @@ public class Comment {
     @Column(name = "rate")
     private Integer rate;
 
-    @OneToMany(mappedBy = "reactedComment")
-    private List<ReactionComment> reactions;
-
-    @OneToMany(mappedBy = "commentResponse")
-    private List<Response> responses;
-
+    @OneToMany(mappedBy = "reactResponse")
+    private List<ReactionResponseEntity> reactions;
 
 }

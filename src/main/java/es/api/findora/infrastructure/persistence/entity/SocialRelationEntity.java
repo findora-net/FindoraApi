@@ -9,17 +9,17 @@ import java.time.LocalDateTime;
 @Table(name = "SOCIAL_RELATION")
 @IdClass(SocialRelationId.class)
 @Data
-public class SocialRelation {
+public class SocialRelationEntity {
 
     @Id
     @ManyToOne
     @JoinColumn(name = "origin_user_id")
-    private User originUser;
+    private UserEntity originUser;
 
     @Id
     @ManyToOne
     @JoinColumn(name = "target_user_id")
-    private User targetUser;
+    private UserEntity targetUser;
 
     @Column(name="type")
     private Enum<TypeSocialRelation> type;

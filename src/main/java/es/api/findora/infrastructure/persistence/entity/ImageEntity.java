@@ -7,14 +7,14 @@ import lombok.Data;
 @Table(name = "IMAGE")
 @Data
 @IdClass(ImageId.class)
-public class Image {
+public class ImageEntity {
     @Id
     private Integer num;
 
     @Id
     @ManyToOne
     @JoinColumn(name = "post_id")
-    private Post imagePost;
+    private PostEntity imagePost;
 
     @Column(name = "image")
     private String image;
