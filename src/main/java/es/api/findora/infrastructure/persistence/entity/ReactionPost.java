@@ -12,15 +12,17 @@ import java.time.LocalDateTime;
 public class ReactionPost {
 
     @Id
-    @Column(name = "user_id")
-    private Long userId;
+    @ManyToOne
+    @JoinColumn(name = "post_id")
+    private User reactPostUser;
 
     @Id
-    @Column(name = "post_id")
-    private Long postId;
+    @ManyToOne
+    @JoinColumn(name = "post_id")
+    private Post reactedPost;
 
     @Column(name = "type")
-    private Type type;
+    private TypeReactionComment type;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;

@@ -6,14 +6,17 @@ import lombok.Data;
 @Entity
 @Table(name = "IMAGE")
 @Data
+@IdClass(ImageId.class)
 public class Image {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer num;
 
-    @Column(name = "post_id")
-    private Long postId;
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "post_id")
+    private Post imagePost;
 
     @Column(name = "image")
     private String image;
+
 }

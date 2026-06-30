@@ -3,7 +3,6 @@ package es.api.findora.infrastructure.persistence.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
@@ -13,15 +12,17 @@ import java.time.LocalDateTime;
 public class ReactionComment{
 
     @Id
-    @Column(name = "user_id")
-    private Long userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User reactCommentUser;
 
     @Id
-    @Column(name = "comment_id")
-    private Long commentId;
+    @ManyToOne
+    @JoinColumn(name = "comment_id")
+    private Comment reactedComment;
 
     @Column(name = "type")
-    private Enum<Type> type;
+    private Enum<TypeReactionComment> type;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;

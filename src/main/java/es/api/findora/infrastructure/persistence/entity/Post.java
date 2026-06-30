@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "POST")
@@ -14,8 +16,9 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "location_id")
-    private Long locationId;
+    @ManyToOne
+    @JoinColumn(name = "location_id")
+    private Location locationPost;
 
     @Column(name = "title")
     private String title;
@@ -29,13 +32,30 @@ public class Post {
     @Column(name = "is_active")
     private Boolean isActive;
 
-    @Column(name = "category_id")
-    private Long categoryId;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category categoryPost;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
-    @Column(name = "created_by")
-    private Long createdBy;
+    @ManyToOne
+    @JoinColumn(name = "created_by")
+    private User postOwner;
+
+    @OneToMany(mappedBy = "commentedPost")
+    private List<Comment> comments;
+
+    @OneToMany(mappedBy = "imagePost")
+    private List<Image> images;
+
+    @OneToMany(mappedBy = "linkPost")
+    private List<Link> links;
+
+    @OneToMany(mappedBy = "reactedPost")
+    private List<ReactionPost> reactions;
+
+    @OneToMany(mappedBy = "postTags")
+    private List<TagPost> tags;
 
 }

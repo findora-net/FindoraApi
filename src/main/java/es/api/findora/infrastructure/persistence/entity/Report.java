@@ -1,10 +1,12 @@
 package es.api.findora.infrastructure.persistence.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
+@Data
 @Entity
-@Table(name = "REPORT_COMMENT")
-public class ReportComment {
+@Table(name = "REPORT")
+public class Report {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,16 +18,20 @@ public class ReportComment {
     @Column(name = "text")
     private String text;
 
+    @Column(name = "type")
+    private String type;
+
     @Column(name = "is_active")
     private Boolean isActive;
 
-    @Column(name = "created_by")
-    private Long createdBy;
+    @ManyToOne
+    @JoinColumn(name = "created_by")
+    private User reportOwner;
 
     @Column(name = "created_at")
     private Integer createdAt;
 
-    @Column(name = "comment_reported_id")
-    private Long commentReportedId;
+    @Column(name = "id_reported")
+    private Long idEntityReported;
 
 }

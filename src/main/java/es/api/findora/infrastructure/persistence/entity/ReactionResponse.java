@@ -8,18 +8,21 @@ import java.time.LocalDateTime;
 @Entity
 @Data
 @Table(name = "REACTION_RESPONSE")
+@IdClass(ReactionResponseId.class)
 public class ReactionResponse {
 
     @Id
-    @Column(name = "user_id")
-    private Long userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User reactResponseUser;
 
     @Id
-    @Column(name = "response_id")
-    private Long responseId;
+    @ManyToOne
+    @JoinColumn(name = "response_id")
+    private Response reactResponse;
 
     @Column(name = "type")
-    private Enum<Type> type;
+    private Enum<TypeReactionComment> type;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;

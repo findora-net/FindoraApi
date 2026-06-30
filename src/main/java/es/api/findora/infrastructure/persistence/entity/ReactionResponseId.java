@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 @Data
 public class ReactionResponseId implements Serializable {
-    private Long userId;
+    private Long reactResponseUser;
 
-    private Long responseId;
+    private Long reactResponse;
 }

@@ -9,8 +9,8 @@ import java.io.Serializable;
 @Data
 public class ReactionCommentId implements Serializable {
 
-    private Long userId;
+    private Long reactCommentUser;
 
-    private Long commentId;
+    private Long reactedComment;
 
 }

@@ -1,5 +1,4 @@
 package es.api.findora.infrastructure.persistence.entity;
-import es.api.findora.infraestructure.adapter.entity.Post;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -27,12 +26,14 @@ public class Location {
     @Column(name = "is_active")
     private Boolean isActive;
 
-    @Column(name = "created_by")
-    private Long createdBy;
+    @ManyToOne
+    @JoinColumn(name = "created_by")
+    private User creator;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
-    @OneToMany(mappedBy = "locationId")
-    private List<Post> postList;
+    @OneToMany(mappedBy = "locationPost")
+    private List<Post> postsIncludesThisLocation;
+
 }
