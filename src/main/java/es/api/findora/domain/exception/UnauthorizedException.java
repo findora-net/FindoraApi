@@ -1,4 +1,4 @@
-package es.api.findora.application.exception;
+package es.api.findora.domain.exception;
 
 public class UnauthorizedException extends RuntimeException {
     public UnauthorizedException(String message) {

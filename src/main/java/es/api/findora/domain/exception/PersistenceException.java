@@ -1,4 +1,4 @@
-package es.api.findora.application.exception;
+package es.api.findora.domain.exception;
 
 public class PersistenceException extends RuntimeException {
     public PersistenceException(String message) {
