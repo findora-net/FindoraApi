@@ -1,4 +1,4 @@
-package es.api.findora.application.exception;
+package es.api.findora.domain.exception;
 
 public class ForbiddenException extends RuntimeException {
     public ForbiddenException(String message) {
