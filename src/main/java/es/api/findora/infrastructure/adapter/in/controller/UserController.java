@@ -4,6 +4,7 @@ import es.api.findora.domain.model.User;
 import es.api.findora.domain.port.in.AddUserRegisterUseCase;
 import es.api.findora.infrastructure.adapter.in.dto.UserRegisterRequest;
 import es.api.findora.infrastructure.adapter.in.dto.UserRegisterResponse;
+import es.api.findora.infrastructure.mapper.UserMapper;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,40 +17,21 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDateTime;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/user")
 @AllArgsConstructor
 public class UserController {
 
     private final AddUserRegisterUseCase addUserRegisterUseCase;
+    private final UserMapper userMapper;
 
     @PostMapping("/register")
-    public ResponseEntity<?> userRegister(@Valid @RequestBody UserRegisterRequest userRegisterRequest, BindingResult bindingResult) throws Exception {
+    public ResponseEntity<UserRegisterResponse> userRegister(@Valid @RequestBody UserRegisterRequest userRegisterRequest, BindingResult bindingResult) throws Exception {
         if(bindingResult.hasErrors()){
             throw new Exception();
         }
-        User userValid = new User(
-                null,
-                userRegisterRequest.getName(),
-                userRegisterRequest.getSurname(),
-                userRegisterRequest.getUsername(),
-                userRegisterRequest.getImage(),
-                userRegisterRequest.getBirthdate(),
-                userRegisterRequest.getEmail(),
-                userRegisterRequest.getPassword(),
-                null,
-                0,
-                null,
-                LocalDateTime.now()
-        );
-        User saved = addUserRegisterUseCase.execute(userValid);
+        User saved = addUserRegisterUseCase.execute(userRegisterRequest);
 
-        UserRegisterResponse response = new UserRegisterResponse(
-                saved.getId(),
-                saved.getUsername(),
-                saved.getName(),
-                saved.getEmail(),
-                saved.getRole()
-        );
+        UserRegisterResponse response = userMapper.toResponse(saved);
 
         return ResponseEntity.ok(response);
 
