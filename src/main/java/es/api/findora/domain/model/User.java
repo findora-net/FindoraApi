@@ -18,9 +18,9 @@ public class User {
     private LocalDate birthdate;
     private String email;
     private String password;
-    private UserRole role;
+    private RoleUser role;
     private int point;
-    private UserStatus status;
+    private StatusUser status;
     private LocalDateTime createdAt;
 
     public int getLevel(){

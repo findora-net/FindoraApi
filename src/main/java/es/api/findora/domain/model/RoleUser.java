@@ -1,5 +1,5 @@
 package es.api.findora.domain.model;
 
-public enum UserRole {
+public enum RoleUser {
     USER, MOD
 }

@@ -14,15 +14,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/category")
+@AllArgsConstructor
 public class CategoryController {
 
     private final GetAllCategoriesUseCase getAllCategoriesUseCase;
     private final CategoryMapper categoryMapper;
-
-    public CategoryController(GetAllCategoriesUseCase getAllCategoriesUseCase, CategoryMapper categoryMapper) {
-        this.getAllCategoriesUseCase = getAllCategoriesUseCase;
-        this.categoryMapper = categoryMapper;
-    }
 
     @GetMapping
     public ResponseEntity<List<CategoryResponse>> getCategory(){
