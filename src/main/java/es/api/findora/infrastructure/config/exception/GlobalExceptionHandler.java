@@ -1,4 +1,4 @@
-package es.api.findora.infrastructure.config.bean;
+package es.api.findora.infrastructure.config.exception;
 
 import es.api.findora.application.exception.*;
 import org.springframework.http.HttpStatus;
