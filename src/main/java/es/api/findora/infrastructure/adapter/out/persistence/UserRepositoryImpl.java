@@ -17,6 +17,24 @@ public class UserRepositoryImpl implements UserRepository {
     private final UserRepositoryJPA userRepositoryJPA;
     private final UserMapper userMapper;
 
+
+    @Override
+    public User save(User user) {
+        UserEntity userEntity = userMapper.toEntity(user);
+        userRepositoryJPA.save(userEntity);
+        return userMapper.toModel(userEntity);
+    }
+
+    @Override
+    public boolean existsByEmail(String email) {
+        return jpa.existsByEmail(email);
+    }
+
+    @Override
+    public boolean existsByUsername(String username) {
+        return jpa.existsByUsername(username);
+    }
+
     @Override
     public User findByUsername(String username) {
         List<UserEntity> users = userRepositoryJPA.findByUsername(username);
@@ -25,7 +43,7 @@ public class UserRepositoryImpl implements UserRepository {
             return null;
         }
 
-        return userMapper.toUser(users.getFirst());
+        return userMapper.toModel(users.getFirst());
     }
 
     @Override
@@ -36,6 +54,6 @@ public class UserRepositoryImpl implements UserRepository {
             return null;
         }
 
-        return userMapper.toUser(users.getFirst());
+        return userMapper.toModel(users.getFirst());
     }
 }
