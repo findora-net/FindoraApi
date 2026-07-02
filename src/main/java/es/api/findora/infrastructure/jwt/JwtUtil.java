@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Component
@@ -23,15 +23,17 @@ public class JwtUtil {
         return Keys.hmacShaKeyFor(SECRET.getBytes());
     }
 
-    public String generateToken(int id, String name, String email, String role, LocalDate creationDate){
+    public String generateToken(long id, String name, String surname, String username, String email, String role, LocalDateTime creationDate){
 
         return Jwts.builder()
                 .setSubject(email)
                 .claim("id",id)
                 .claim("name",name)
+                .claim("surname",surname)
+                .claim("username",username)
                 .claim("email",email)
                 .claim("role",role)
-                .claim("creationDate",creationDate.toString())
+                .claim("createdAt",creationDate.toString())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .signWith(getSigningKey(), SignatureAlgorithm.HS256)

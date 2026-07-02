@@ -4,9 +4,11 @@ import es.api.findora.domain.model.Category;
 import es.api.findora.domain.port.in.GetAllCategoriesUseCase;
 import es.api.findora.domain.port.out.CategoryRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 @AllArgsConstructor
 public class GetAllCategoriesUseCaseImpl implements GetAllCategoriesUseCase {
 
