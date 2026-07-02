@@ -23,13 +23,15 @@ public class UserController {
 
     private final AddUserRegisterUseCase addUserRegisterUseCase;
     private final UserMapper userMapper;
-
     @PostMapping("/register")
     public ResponseEntity<UserRegisterResponse> userRegister(@Valid @RequestBody UserRegisterRequest userRegisterRequest, BindingResult bindingResult) throws Exception {
         if(bindingResult.hasErrors()){
             throw new Exception();
         }
-        User saved = addUserRegisterUseCase.execute(userRegisterRequest);
+
+        User user = userMapper.toModel(userRegisterRequest);
+
+        User saved = addUserRegisterUseCase.execute(user);
 
         UserRegisterResponse response = userMapper.toResponse(saved);
 

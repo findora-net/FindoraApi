@@ -1,13 +1,12 @@
 package es.api.findora.application.usecase;
 
+import es.api.findora.domain.exception.BusinessException;
+import es.api.findora.domain.exception.ValidationException;
 import es.api.findora.domain.model.User;
 import es.api.findora.domain.port.in.AddUserRegisterUseCase;
 import es.api.findora.domain.port.out.UserRepository;
 
-import es.api.findora.infrastructure.adapter.in.dto.UserRegisterRequest;
-import es.api.findora.infrastructure.mapper.UserMapper;
 import lombok.AllArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,11 +14,9 @@ import org.springframework.stereotype.Service;
 public class AddUserRegisterUseCaseImpl implements AddUserRegisterUseCase {
 
     private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
-    private final UserMapper userMapper;
 
     @Override
-    public User execute(UserRegisterRequest request) {
+    public User execute(User user) {
 
         // Validación de email duplicado
         if (userRepository.existsByEmail(user.getEmail())) {
@@ -35,10 +32,6 @@ public class AddUserRegisterUseCaseImpl implements AddUserRegisterUseCase {
         if (user.getPassword().length() < 6) {
             throw new ValidationException("La contraseña debe tener mínimo 6 caracteres");
         }
-
-        User user = userMapper.toEntity(request);
-        String hashed = passwordEncoder.encode(user.getPassword());
-        user.setPassword(hashed);
 
         return userRepository.save(user);
     }

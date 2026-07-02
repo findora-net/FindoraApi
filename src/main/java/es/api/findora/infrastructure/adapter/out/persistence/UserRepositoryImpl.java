@@ -2,6 +2,9 @@ package es.api.findora.infrastructure.adapter.out.persistence;
 
 import es.api.findora.domain.model.User;
 import es.api.findora.domain.port.out.UserRepository;
+import es.api.findora.infrastructure.mapper.UserMapper;
+import es.api.findora.infrastructure.persistence.entity.UserEntity;
+import es.api.findora.infrastructure.persistence.repository.UserRepositoryJPA;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -10,11 +13,15 @@ import org.springframework.stereotype.Repository;
 @AllArgsConstructor
 public class UserRepositoryImpl implements UserRepository {
 
-    private final SpringDataUserRepository jpa;
+    private final UserRepositoryJPA userRepositoryJPA;
+    private final UserMapper userMapper;
+
 
     @Override
     public User save(User user) {
-        return jpa.save(user);
+        UserEntity userEntity = userMapper.toEntity(user);
+        userRepositoryJPA.save(userEntity);
+        return userMapper.toModel(userEntity);
     }
 
     @Override
