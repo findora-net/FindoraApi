@@ -13,5 +13,4 @@ public class Comment {
     private User createdBy;
     private Boolean isActive;
     private Integer rate;
-
 }

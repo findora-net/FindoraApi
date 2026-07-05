@@ -7,5 +7,6 @@ import es.api.findora.domain.model.SortDirection;
 import java.util.List;
 
 public interface CommentRepository {
-    List<Comment> getCommentsOrdered(Long postId, SortDirection sortDirection);
+    boolean existsPost(Long postId);
+    List<Comment> getCommentsOrdered(Long postId, SortDirection direction);
 }
