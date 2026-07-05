@@ -1,4 +1,4 @@
-package es.api.findora.infrastructure.config.bean;
+package es.api.findora.infrastructure.config.cloudinary;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
