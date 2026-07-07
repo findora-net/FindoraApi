@@ -34,10 +34,11 @@ public class AddUserRegisterUseCaseImpl implements AddUserRegisterUseCase {
         if (user.getPassword().length() < 6) {
             throw new ValidationException("La contraseña debe tener mínimo 6 caracteres");
         }
-        VerificationToken verificationToken = verificationTokenUseCase.createToken(user.getId());
+        User savedUser = userRepository.save(user);
+        VerificationToken verificationToken = verificationTokenUseCase.createToken(savedUser.getId());
         String link = "http://localhost:8080/api/auth/verify?token=" + verificationToken.getToken();
-        emailSender.sendVerificationEmail(user.getEmail(), link);
+        emailSender.sendVerificationEmail(savedUser.getEmail(), link);
 
-        return userRepository.save(user);
+        return savedUser;
     }
 }

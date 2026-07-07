@@ -1,5 +1,7 @@
 package es.api.findora.infrastructure.adapter.in.controller;
 
+import es.api.findora.domain.model.RoleUser;
+import es.api.findora.domain.model.StatusUser;
 import es.api.findora.domain.model.User;
 import es.api.findora.domain.port.in.AddUserRegisterUseCase;
 import es.api.findora.infrastructure.adapter.in.dto.UserRegisterRequest;
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.time.LocalDateTime;
 
 
 @RestController
@@ -30,7 +34,11 @@ public class UserController {
         }
 
         User user = userMapper.toModel(userRegisterRequest);
-
+        user.setRole(RoleUser.USER);
+        user.setStatus(StatusUser.ACTIVE);
+        user.setPoint(0);
+        user.setCreatedAt(LocalDateTime.now());
+        
         User saved = addUserRegisterUseCase.execute(user);
 
         UserRegisterResponse response = userMapper.toResponse(saved);

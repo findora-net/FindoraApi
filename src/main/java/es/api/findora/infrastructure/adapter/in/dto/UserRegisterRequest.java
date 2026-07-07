@@ -1,7 +1,6 @@
 package es.api.findora.infrastructure.adapter.in.dto;
 
-import es.api.findora.domain.model.UserRole;
-import es.api.findora.domain.model.UserStatus;
+import es.api.findora.domain.model.RoleUser;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -17,7 +16,7 @@ public class UserRegisterRequest {
     private LocalDate birthdate;
     private String email;
     private String password;
-
+    private RoleUser role;
     private int point;
 
     private LocalDateTime createdAt;

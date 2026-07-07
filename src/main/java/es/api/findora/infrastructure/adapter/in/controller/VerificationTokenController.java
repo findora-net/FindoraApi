@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/auth/verify")
+@RequestMapping("/auth")
 @AllArgsConstructor
 public class VerificationTokenController {
 
     private final VerificationTokenUseCase verificationTokenUseCase;
 
 
-    @GetMapping("/auth/verify")
+    @GetMapping("/verify")
     public ResponseEntity<String> verifyAccount(@RequestParam("token") String token) {
         verificationTokenUseCase.verify(token);
         return ResponseEntity.ok("Cuenta verificada correctamente. Ya puedes iniciar sesión.");
