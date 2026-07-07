@@ -25,7 +25,7 @@ public class UserRepositoryImpl implements UserRepository {
             return null;
         }
 
-        return userMapper.toUser(users.getFirst());
+        return userMapper.toModel(users.getFirst());
     }
 
     @Override
@@ -36,6 +36,6 @@ public class UserRepositoryImpl implements UserRepository {
             return null;
         }
 
-        return userMapper.toUser(users.getFirst());
+        return userMapper.toModel(users.getFirst());
     }
 }

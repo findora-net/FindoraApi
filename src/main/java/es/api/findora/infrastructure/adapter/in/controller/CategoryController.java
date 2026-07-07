@@ -2,7 +2,7 @@ package es.api.findora.infrastructure.adapter.in.controller;
 
 import es.api.findora.domain.model.Category;
 import es.api.findora.domain.port.in.GetAllCategoriesUseCase;
-import es.api.findora.infrastructure.adapter.in.dto.CategoryResponse;
+import es.api.findora.infrastructure.adapter.in.dto.category.CategoryResponse;
 import es.api.findora.infrastructure.mapper.CategoryMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
