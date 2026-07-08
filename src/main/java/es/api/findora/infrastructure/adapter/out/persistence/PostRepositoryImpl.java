@@ -1,7 +1,7 @@
 package es.api.findora.infrastructure.adapter.out.persistence;
 
 import es.api.findora.domain.model.PageModel;
-import es.api.findora.domain.model.PaginationRequest;
+import es.api.findora.domain.query.PaginationQuery;
 import es.api.findora.domain.model.Post;
 import es.api.findora.domain.port.out.PostRepository;
 import es.api.findora.infrastructure.mapper.PostMapper;
@@ -22,15 +22,15 @@ public class PostRepositoryImpl implements PostRepository {
     private final PostMapper postMapper;
 
     @Override
-    public PageModel<Post> list(PaginationRequest paginationRequest) {
+    public PageModel<Post> list(PaginationQuery paginationQuery) {
         Pageable pageable = PageRequest.of(
-                paginationRequest.getPageNumber(),
-                paginationRequest.getPageSize(),
+                paginationQuery.getPageNumber(),
+                paginationQuery.getPageSize(),
                 Sort.by(
-                        paginationRequest.isAsc() ?
+                        paginationQuery.isAsc() ?
                                 Sort.Direction.ASC :
                                 Sort.Direction.DESC,
-                        paginationRequest.getSortBy())
+                        paginationQuery.getSortBy())
         );
 
         Page<PostEntity> page = postRepositoryJPA.findAll(pageable);

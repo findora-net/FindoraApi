@@ -3,6 +3,7 @@ package es.api.findora.domain.model;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 public class Post {
@@ -15,4 +16,5 @@ public class Post {
     private Category category;
     private LocalDateTime createdAt;
     private User createdBy;
+    private List<Tag> tags;
 }

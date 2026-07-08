@@ -1,14 +1,12 @@
 package es.api.findora.application.usecase;
 
 import es.api.findora.domain.model.PageModel;
-import es.api.findora.domain.model.PaginationRequest;
+import es.api.findora.domain.query.PaginationQuery;
 import es.api.findora.domain.model.Post;
 import es.api.findora.domain.port.in.ListPostUseCase;
 import es.api.findora.domain.port.out.PostRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -23,13 +21,13 @@ public class ListPostUseCaseImpl implements ListPostUseCase {
     @Override
     public PageModel<Post> execute(Integer pageKey, Integer pageSize) {
 
-        PaginationRequest paginationRequest = new PaginationRequest(
+        PaginationQuery paginationQuery = new PaginationQuery(
                 processPageKey(pageKey),
                 processPageSize(pageSize),
                 false,
                 DEFAULT_ORDERBY
         );
-        return postRepository.list(paginationRequest);
+        return postRepository.list(paginationQuery);
     }
 
     public int processPageKey(Integer pageKey){

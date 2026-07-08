@@ -1,11 +1,11 @@
-package es.api.findora.domain.model;
+package es.api.findora.domain.query;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class PaginationRequest {
+public class PaginationQuery {
 
     private int pageNumber;
     private int pageSize;
