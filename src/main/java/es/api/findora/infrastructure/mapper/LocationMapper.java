@@ -1,7 +1,7 @@
 package es.api.findora.infrastructure.mapper;
 
 import es.api.findora.domain.model.Location;
-import es.api.findora.infrastructure.adapter.in.dto.CreateLocationRequest;
+import es.api.findora.infrastructure.adapter.in.dto.location.CreateLocationRequest;
 import es.api.findora.infrastructure.adapter.in.dto.location.LocationResume;
 import es.api.findora.infrastructure.persistence.entity.LocationEntity;
 import org.mapstruct.Mapper;

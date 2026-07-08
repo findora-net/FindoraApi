@@ -1,4 +1,4 @@
-package es.api.findora.infrastructure.adapter.in.dto;
+package es.api.findora.infrastructure.adapter.in.dto.location;
 
 import es.api.findora.infrastructure.persistence.entity.UserEntity;
 import lombok.Data;
