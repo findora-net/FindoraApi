@@ -1,16 +1,14 @@
 package es.api.findora.infrastructure.persistence.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
-@Entity(name = "USER")
+@Entity
+@Table(name = "USER")
 public class UserEntity {
 
     @Id
@@ -37,14 +35,16 @@ public class UserEntity {
     @Column(name = "password")
     private String password;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "role")
-    private Enum<RoleUser> role;
+    private RoleUser role;
 
     @Column(name = "point")
     private Integer point;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    private Enum<StatusUser> status;
+    private StatusUser status;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
