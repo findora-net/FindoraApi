@@ -1,5 +1,6 @@
 package es.api.findora.infrastructure.adapter.out.persistence;
 
+import es.api.findora.domain.exception.NotFoundException;
 import es.api.findora.domain.model.User;
 import es.api.findora.domain.port.out.UserRepository;
 import es.api.findora.infrastructure.mapper.UserMapper;
@@ -60,6 +61,14 @@ public class UserRepositoryImpl implements UserRepository {
         }
 
         return userMapper.toModel(users.getFirst());
+    }
+
+    @Override
+    public User updatePhoto(String photoUrl, User user) {
+        UserEntity userEntity = userRepositoryJPA.findById(user.getId()).orElseThrow(()->new NotFoundException("No se encuentra el usuario"));
+        userEntity.setImage(photoUrl);
+        userRepositoryJPA.save(userEntity);
+        return userMapper.toModel(userEntity);
     }
 
     @Override

@@ -10,6 +10,6 @@ public interface UserRepository {
     boolean existsByUsername(String username);
     User findByUsername(String username);
     User findByEmail(String email);
-
+    User updatePhoto(String photoUrl, User user);
     User findById(Long userId);
 }
