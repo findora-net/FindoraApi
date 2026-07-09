@@ -22,9 +22,11 @@ public class CommentController {
     @GetMapping("/{postId}")
     public ResponseEntity<List<CommentResponse>> getCommentsSorted(
             @PathVariable Long postId,
-            @RequestParam String direction) {
+            @RequestParam(required = false) String direction) {
 
-        SortDirection sortDirection = SortDirection.valueOf(direction.toUpperCase());
+        SortDirection sortDirection = (direction == null)
+                ? SortDirection.DESC
+                : SortDirection.valueOf(direction.toUpperCase());
 
         List<Comment> comments = getCommentsByDateUseCase.execute(postId, sortDirection);
 

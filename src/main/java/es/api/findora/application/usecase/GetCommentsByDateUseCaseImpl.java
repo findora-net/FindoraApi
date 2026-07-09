@@ -18,8 +18,8 @@ public class GetCommentsByDateUseCaseImpl implements GetCommentsByDateUseCase {
     private final CommentRepository commentRepository;
 
     @Override
-    public List<Comment> execute(Long postId, SortDirection direction) {
-        return this.commentRepository.getCommentsOrdered(postId, direction);
+    public List<Comment> execute(Long commentedPost, SortDirection direction) {
+        return this.commentRepository.getCommentsOrdered(commentedPost, direction);
     }
 
 }

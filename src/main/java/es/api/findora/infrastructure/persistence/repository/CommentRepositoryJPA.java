@@ -6,9 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface CommentRepositoryJPA extends JpaRepository<CommentEntity, Long> {
-    boolean existsByPostId(Long postId);
 
-    List<CommentEntity> findByPostIdOrderByCreatedAtAsc(Long postId);
+    List<CommentEntity> findByCommentedPost_IdOrderByCreatedAtAsc(Long postId);
 
-    List<CommentEntity> findByPostIdOrderByCreatedAtDesc(Long postId);
+    List<CommentEntity> findByCommentedPost_IdOrderByCreatedAtDesc(Long postId);
 }
+

@@ -6,5 +6,5 @@ import es.api.findora.domain.model.SortDirection;
 import java.util.List;
 
 public interface GetCommentsByDateUseCase {
-    List<Comment> execute(Long postId, SortDirection direction);
+    List<Comment> execute(Long commentedPost, SortDirection direction);
 }
