@@ -1,7 +1,6 @@
 package es.api.findora.infrastructure.adapter.in.controller;
 
-import es.api.findora.domain.model.RoleUser;
-import es.api.findora.domain.model.StatusUser;
+
 import es.api.findora.domain.model.User;
 import es.api.findora.domain.port.in.AddUserRegisterUseCase;
 import es.api.findora.domain.port.out.PhotoRepository;
@@ -15,7 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.time.LocalDateTime;
+
 
 
 @RestController
@@ -44,10 +43,7 @@ public class UserController {
 
         User user = userMapper.toModel(userRegisterRequest);
         user.setImage(photoUrl);
-        user.setRole(RoleUser.USER);
-        user.setStatus(StatusUser.ACTIVE);
-        user.setPoint(0);
-        user.setCreatedAt(LocalDateTime.now());
+
         
         User saved = addUserRegisterUseCase.execute(user);
 
