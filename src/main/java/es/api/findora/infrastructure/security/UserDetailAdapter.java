@@ -1,5 +1,6 @@
 package es.api.findora.infrastructure.security;
 
+import es.api.findora.domain.model.StatusUser;
 import es.api.findora.domain.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,7 +26,10 @@ public class UserDetailAdapter implements UserDetails {
         autoridades.add(new SimpleGrantedAuthority("ROLE_" + user.getRole()));
         return autoridades;
     }
-
+    @Override
+    public boolean isEnabled() {
+        return user.getStatus() == StatusUser.ACTIVE;
+    }
     @Override
     public @Nullable String getPassword() {
         return this.user.getPassword();
