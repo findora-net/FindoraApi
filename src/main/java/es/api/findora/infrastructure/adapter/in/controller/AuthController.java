@@ -2,8 +2,8 @@ package es.api.findora.infrastructure.adapter.in.controller;
 
 import com.cloudinary.api.exceptions.BadRequest;
 import es.api.findora.domain.port.in.LoginUseCase;
-import es.api.findora.infrastructure.adapter.in.dto.LoginRequest;
-import es.api.findora.infrastructure.adapter.in.dto.LoginResponse;
+import es.api.findora.infrastructure.adapter.in.dto.auth.LoginRequest;
+import es.api.findora.infrastructure.adapter.in.dto.auth.LoginResponse;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;

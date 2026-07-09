@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 @Data
 public class Post {
     private Long id;
-    private Post post;
+    private Location location;
     private String title;
     private String content;
     private Integer rate;

@@ -1,4 +1,4 @@
-package es.api.findora.infrastructure.adapter.in.dto;
+package es.api.findora.infrastructure.adapter.in.dto.auth;
 
 import lombok.Data;
 
