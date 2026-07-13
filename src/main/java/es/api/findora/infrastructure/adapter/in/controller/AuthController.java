@@ -1,6 +1,6 @@
 package es.api.findora.infrastructure.adapter.in.controller;
 
-import com.cloudinary.api.exceptions.BadRequest;
+import es.api.findora.domain.exception.ValidationException;
 import es.api.findora.domain.port.in.LoginUseCase;
 import es.api.findora.domain.port.in.VerificationTokenUseCase;
 import es.api.findora.infrastructure.adapter.in.dto.auth.LoginRequest;
@@ -20,11 +20,11 @@ public class AuthController {
     private final VerificationTokenUseCase verificationTokenUseCase;
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> login(@RequestBody @Valid LoginRequest loginRequest, BindingResult bindingResult) throws Exception {
+    public ResponseEntity<LoginResponse> login(@RequestBody @Valid LoginRequest loginRequest, BindingResult bindingResult) throws ValidationException{
         if(bindingResult.hasErrors()){
             StringBuilder sb = new StringBuilder();
-            bindingResult.getAllErrors().forEach(er -> sb.append("-" + er.getDefaultMessage()));
-            throw new BadRequest(sb.toString());
+            bindingResult.getAllErrors().forEach(er -> sb.append(er.getDefaultMessage() + "\n"));
+            throw new ValidationException(sb.toString().trim());
         }
 
         String token = loginUseCase.execute(loginRequest.getUsername(), loginRequest.getPassword());
