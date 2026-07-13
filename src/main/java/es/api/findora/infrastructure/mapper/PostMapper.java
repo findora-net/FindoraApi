@@ -3,7 +3,10 @@ package es.api.findora.infrastructure.mapper;
 import es.api.findora.domain.model.PageModel;
 import es.api.findora.domain.model.Post;
 import es.api.findora.domain.model.Tag;
+import es.api.findora.domain.query.ListPostQuery;
+import es.api.findora.domain.query.PaginationQuery;
 import es.api.findora.infrastructure.adapter.in.dto.PageResponse;
+import es.api.findora.infrastructure.adapter.in.dto.post.ListPostRequest;
 import es.api.findora.infrastructure.adapter.in.dto.post.PostResponse;
 import es.api.findora.infrastructure.persistence.entity.PostEntity;
 import es.api.findora.infrastructure.persistence.entity.TagPostEntity;
@@ -22,6 +25,9 @@ import java.util.List;
         TagMapper.class
 })
 public abstract class PostMapper {
+
+    private final int DEFAULT_PAGEKEY = 0;
+    private final int DEFAULT_PAGESIZE = 10;
 
     @Autowired
     protected PageMapper pageMapper;
@@ -50,4 +56,7 @@ public abstract class PostMapper {
     public PageModel<Post> toPageModel(Page<PostEntity> page){
         return pageMapper.toPageModel(page, this::toModel);
     }
+
+
+    public abstract ListPostQuery toQuery(ListPostRequest listPostRequest);
 }

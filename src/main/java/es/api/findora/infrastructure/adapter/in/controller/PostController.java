@@ -3,6 +3,8 @@ package es.api.findora.infrastructure.adapter.in.controller;
 import es.api.findora.domain.model.PageModel;
 import es.api.findora.domain.model.Post;
 import es.api.findora.domain.port.in.ListPostUseCase;
+import es.api.findora.domain.query.ListPostQuery;
+import es.api.findora.domain.query.PaginationQuery;
 import es.api.findora.infrastructure.adapter.in.dto.PageResponse;
 import es.api.findora.infrastructure.adapter.in.dto.post.ListPostRequest;
 import es.api.findora.infrastructure.adapter.in.dto.post.PostResponse;
@@ -28,7 +30,10 @@ public class PostController {
     @PostMapping("/request")
     public ResponseEntity<PageResponse<PostResponse>> list(@RequestBody ListPostRequest listPostRequest){
 
-        PageModel<Post> page = listAllPostUseCase.execute(listPostRequest.getPageKey(), listPostRequest.getPageSize());
+        PaginationQuery paginationQuery = listPostRequest.buildPaginationQuery();
+        ListPostQuery listPostQuery = postMapper.toQuery(listPostRequest);
+
+        PageModel<Post> page = listAllPostUseCase.execute(paginationQuery,listPostQuery);
         PageResponse<PostResponse> response = postMapper.toPageResponse(page);
 
         return ResponseEntity.ok(response);
