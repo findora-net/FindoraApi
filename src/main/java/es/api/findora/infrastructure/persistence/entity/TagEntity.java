@@ -1,14 +1,12 @@
 package es.api.findora.infrastructure.persistence.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.List;
 
-@Entity(name = "Tag")
+@Entity
+@Table(name = "TAG")
 @Data
 public class TagEntity {
 
