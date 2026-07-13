@@ -3,8 +3,8 @@ package es.api.findora.infrastructure.adapter.in.controller;
 
 import es.api.findora.domain.model.User;
 import es.api.findora.domain.port.in.AddUserRegisterUseCase;
-import es.api.findora.infrastructure.adapter.in.dto.UserRegisterRequest;
-import es.api.findora.infrastructure.adapter.in.dto.UserRegisterResponse;
+import es.api.findora.infrastructure.adapter.in.dto.user.UserRegisterRequest;
+import es.api.findora.infrastructure.adapter.in.dto.user.UserRegisterResponse;
 import es.api.findora.infrastructure.mapper.UserMapper;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
