@@ -12,18 +12,24 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface CommentMapper {
 
-    @Mapping(target = "user.id", source = "userId")
-    @Mapping(target = "user.username", source = "username")
+    @Mapping(target = "user.id", source = "createdBy.id")
+    @Mapping(target = "user.username", source = "createdBy.username")
+    @Mapping(target = "rate", source = "rate")
     @Mapping(target = "text", source = "text")
-    @Mapping(target = "date", source = "date")
+    @Mapping(target = "date", source = "createdAt")
+    @Mapping(target = "responses", source = "responses")
     CommentResponse toCommentResponse(Comment comment);
 
-    @Mapping(target = "user.id", source = "userId")
-    @Mapping(target = "user.username", source = "username")
-    @Mapping(target = "date", source = "date")
+    @Mapping(target = "user.id", source = "createdBy.id")
+    @Mapping(target = "user.username", source = "createdBy.username")
+    @Mapping(target = "rate", source = "rate")
+    @Mapping(target = "text", source = "text")
+    @Mapping(target = "date", source = "createdAt")
     ResponseResponse toResponseResponse(Response response);
 
     List<ResponseResponse> toResponseResponseList(List<Response> responses);
 }
+
+
 
 

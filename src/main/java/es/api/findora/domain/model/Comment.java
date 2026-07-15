@@ -8,10 +8,11 @@ import java.util.List;
 @Data
 public class Comment {
     private Long id;
-    private Long userId;
-    private String username;
-    private Integer rate;
+    private Post post;
     private String text;
-    private LocalDateTime date;
+    private LocalDateTime createdAt;
+    private User createdBy;
+    private Boolean isActive;
+    private Integer rate;
     private List<Response> responses;
 }

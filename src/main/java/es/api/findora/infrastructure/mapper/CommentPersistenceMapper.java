@@ -10,17 +10,26 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface CommentPersistenceMapper {
 
-    @Mapping(target = "userId", source = "commentOwner.id")
-    @Mapping(target = "username", source = "commentOwner.username")
+    // COMMENT
+    @Mapping(target = "post", ignore = true) // no lo necesitamos en US27
+    @Mapping(target = "createdBy", source = "commentOwner")
     @Mapping(target = "text", source = "text")
-    @Mapping(target = "date", source = "createdAt")
-    @Mapping(target = "responses", source = "responses")
+    @Mapping(target = "createdAt", source = "createdAt")
+    @Mapping(target = "isActive", source = "isActive")
+    @Mapping(target = "rate", source = "rate")
+    @Mapping(target = "responses", source = "responses")   // ✔ ahora sí
     Comment toDomain(CommentEntity entity);
 
-    @Mapping(target = "userId", source = "responseOwner.id")
-    @Mapping(target = "username", source = "responseOwner.username")
+    // RESPONSE
+    @Mapping(target = "comment", ignore = true)            // rompe el ciclo
+    @Mapping(target = "createdBy", source = "responseOwner")
     @Mapping(target = "text", source = "text")
-    @Mapping(target = "date", source = "createdAt")
+    @Mapping(target = "createdAt", source = "createdAt")
+    @Mapping(target = "isActive", source = "isActive")
+    @Mapping(target = "rate", source = "rate")
     Response toDomain(ResponseEntity entity);
 }
+
+
+
 

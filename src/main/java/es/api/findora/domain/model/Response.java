@@ -7,10 +7,10 @@ import java.time.LocalDateTime;
 @Data
 public class Response {
     private Long id;
-    private Long userId;
-    private String username;
-    private Integer rate;
+    private Comment comment;
+    private User createdBy;
     private String text;
-    private LocalDateTime date;
+    private LocalDateTime createdAt;
+    private Boolean isActive;
+    private Integer rate;
 }
-
