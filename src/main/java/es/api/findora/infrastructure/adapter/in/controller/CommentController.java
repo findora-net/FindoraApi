@@ -3,7 +3,7 @@ package es.api.findora.infrastructure.adapter.in.controller;
 import es.api.findora.domain.model.Comment;
 import es.api.findora.domain.model.SortDirection;
 import es.api.findora.domain.port.in.GetCommentsByDateUseCase;
-import es.api.findora.infrastructure.adapter.in.dto.CommentResponse;
+import es.api.findora.infrastructure.adapter.in.dto.comment.CommentResponse;
 import es.api.findora.infrastructure.mapper.CommentMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;

@@ -1,7 +1,7 @@
-package es.api.findora.infrastructure.adapter.in.dto;
+package es.api.findora.infrastructure.adapter.in.dto.comment;
 
-import es.api.findora.domain.model.Post;
-import es.api.findora.domain.model.User;
+import es.api.findora.infrastructure.adapter.in.dto.response.ResponseResponse;
+import es.api.findora.infrastructure.adapter.in.dto.UserResponse;
 import lombok.Data;
 
 import java.util.List;

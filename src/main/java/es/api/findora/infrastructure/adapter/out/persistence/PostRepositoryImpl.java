@@ -7,6 +7,7 @@ import es.api.findora.domain.model.Post;
 import es.api.findora.domain.port.out.PostRepository;
 import es.api.findora.infrastructure.mapper.PostMapper;
 import es.api.findora.infrastructure.persistence.entity.*;
+import es.api.findora.infrastructure.persistence.repository.PostRepositoryJPA;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.*;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @AllArgsConstructor
@@ -22,6 +24,8 @@ public class PostRepositoryImpl implements PostRepository {
 
     private EntityManager entityManager;
     private final PostMapper postMapper;
+    private final PostRepositoryJPA jpa;
+
 
     @Override
     public PageModel<Post> list(PaginationQuery paginationQuery, ListPostQuery listPostQuery) {
@@ -41,6 +45,16 @@ public class PostRepositoryImpl implements PostRepository {
 
 
         return paginate(paginationQuery, listPostQuery, query);
+    }
+
+    @Override
+    public Optional<Post> findById(Long id) {
+        return jpa.findById(id).map(postMapper::toDomain);
+    }
+
+    @Override
+    public boolean existsPost(Long id) {
+        return jpa.existsById(id);
     }
 
     private void processOrder(PaginationQuery paginationQuery, CriteriaBuilder cb, CriteriaQuery<PostEntity> cq, Root<PostEntity> root){

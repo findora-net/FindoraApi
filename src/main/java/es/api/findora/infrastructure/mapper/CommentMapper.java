@@ -2,8 +2,8 @@ package es.api.findora.infrastructure.mapper;
 
 import es.api.findora.domain.model.Comment;
 import es.api.findora.domain.model.Response;
-import es.api.findora.infrastructure.adapter.in.dto.CommentResponse;
-import es.api.findora.infrastructure.adapter.in.dto.ResponseResponse;
+import es.api.findora.infrastructure.adapter.in.dto.comment.CommentResponse;
+import es.api.findora.infrastructure.adapter.in.dto.response.ResponseResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
