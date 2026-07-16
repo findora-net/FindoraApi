@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: db
--- Tiempo de generación: 16-07-2026 a las 08:42:34
+-- Tiempo de generación: 16-07-2026 a las 08:45:56
 -- Versión del servidor: 8.1.0
 -- Versión de PHP: 8.2.27
 
@@ -614,6 +614,7 @@ CREATE TABLE `RESPONSE` (
   `comment_id` bigint NOT NULL,
   `created_by` bigint NOT NULL,
   `text` text NOT NULL,
+  `old_text` text,
   `created_at` date NOT NULL,
   `is_active` tinyint(1) NOT NULL,
   `rate` int NOT NULL
@@ -623,29 +624,29 @@ CREATE TABLE `RESPONSE` (
 -- Volcado de datos para la tabla `RESPONSE`
 --
 
-INSERT INTO `RESPONSE` (`id`, `comment_id`, `created_by`, `text`, `created_at`, `is_active`, `rate`) VALUES
-(1, 1, 22, 'Totalmente de acuerdo, es un sitio muy tranquilo.', '2026-05-11', 1, 5),
-(2, 3, 17, 'Yo también quedé impresionado con las vistas.', '2026-05-13', 1, 4),
-(3, 5, 33, 'Esa parte del camino es la mejor.', '2026-05-14', 1, 5),
-(4, 7, 29, 'En primavera está aún más bonito.', '2026-05-16', 1, 5),
-(5, 7, 12, 'Coincido, merece mucho la pena.', '2026-05-16', 1, 4),
-(6, 8, 41, 'Yo también volveré, es espectacular.', '2026-05-16', 1, 5),
-(7, 10, 24, 'La cueva es enorme, sorprende mucho.', '2026-05-18', 1, 4),
-(8, 12, 36, 'Buen sitio para observar el cielo, sí.', '2026-05-19', 1, 5),
-(9, 14, 20, 'A mí también me pareció muy relajante.', '2026-05-20', 1, 4),
-(10, 16, 28, 'El eco es increíble, me sorprendió.', '2026-05-22', 1, 5),
-(11, 16, 39, 'Yo también pensé lo mismo.', '2026-05-22', 1, 4),
-(12, 18, 35, 'La playa suele estar tranquila entre semana.', '2026-05-23', 1, 4),
-(13, 20, 44, 'Las señales ayudan bastante, sí.', '2026-05-24', 1, 5),
-(14, 22, 31, 'El agua siempre está fría allí.', '2026-05-26', 1, 4),
-(15, 22, 18, 'Aun así merece la pena.', '2026-05-26', 1, 5),
-(16, 24, 14, 'Es una ruta muy accesible.', '2026-05-27', 1, 4),
-(17, 26, 43, 'El ambiente es muy natural, sí.', '2026-05-28', 1, 5),
-(18, 28, 19, 'A mí también me ayudó a desconectar.', '2026-05-30', 1, 4),
-(19, 30, 32, 'La laguna suele estar tranquila por la mañana.', '2026-05-31', 1, 5),
-(20, 32, 27, 'La subida es dura pero vale la pena.', '2026-06-01', 1, 5),
-(21, 32, 40, 'Las vistas son increíbles.', '2026-06-01', 1, 4),
-(22, 34, 23, 'Es un sitio perfecto para relajarse.', '2026-06-03', 1, 5);
+INSERT INTO `RESPONSE` (`id`, `comment_id`, `created_by`, `text`, `old_text`, `created_at`, `is_active`, `rate`) VALUES
+(1, 1, 22, 'Totalmente de acuerdo, es un sitio muy tranquilo.', NULL, '2026-05-11', 1, 5),
+(2, 3, 17, 'Yo también quedé impresionado con las vistas.', NULL, '2026-05-13', 1, 4),
+(3, 5, 33, 'Esa parte del camino es la mejor.', NULL, '2026-05-14', 1, 5),
+(4, 7, 29, 'En primavera está aún más bonito.', NULL, '2026-05-16', 1, 5),
+(5, 7, 12, 'Coincido, merece mucho la pena.', NULL, '2026-05-16', 1, 4),
+(6, 8, 41, 'Yo también volveré, es espectacular.', NULL, '2026-05-16', 1, 5),
+(7, 10, 24, 'La cueva es enorme, sorprende mucho.', NULL, '2026-05-18', 1, 4),
+(8, 12, 36, 'Buen sitio para observar el cielo, sí.', NULL, '2026-05-19', 1, 5),
+(9, 14, 20, 'A mí también me pareció muy relajante.', NULL, '2026-05-20', 1, 4),
+(10, 16, 28, 'El eco es increíble, me sorprendió.', NULL, '2026-05-22', 1, 5),
+(11, 16, 39, 'Yo también pensé lo mismo.', NULL, '2026-05-22', 1, 4),
+(12, 18, 35, 'La playa suele estar tranquila entre semana.', NULL, '2026-05-23', 1, 4),
+(13, 20, 44, 'Las señales ayudan bastante, sí.', NULL, '2026-05-24', 1, 5),
+(14, 22, 31, 'El agua siempre está fría allí.', NULL, '2026-05-26', 1, 4),
+(15, 22, 18, 'Aun así merece la pena.', NULL, '2026-05-26', 1, 5),
+(16, 24, 14, 'Es una ruta muy accesible.', NULL, '2026-05-27', 1, 4),
+(17, 26, 43, 'El ambiente es muy natural, sí.', NULL, '2026-05-28', 1, 5),
+(18, 28, 19, 'A mí también me ayudó a desconectar.', NULL, '2026-05-30', 1, 4),
+(19, 30, 32, 'La laguna suele estar tranquila por la mañana.', NULL, '2026-05-31', 1, 5),
+(20, 32, 27, 'La subida es dura pero vale la pena.', NULL, '2026-06-01', 1, 5),
+(21, 32, 40, 'Las vistas son increíbles.', NULL, '2026-06-01', 1, 4),
+(22, 34, 23, 'Es un sitio perfecto para relajarse.', NULL, '2026-06-03', 1, 5);
 
 -- --------------------------------------------------------
 
