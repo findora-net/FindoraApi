@@ -59,4 +59,6 @@ public abstract class PostMapper {
 
 
     public abstract ListPostQuery toQuery(ListPostRequest listPostRequest);
+
+
 }

@@ -5,6 +5,7 @@ import es.api.findora.domain.query.ListPostQuery;
 import es.api.findora.domain.query.PaginationQuery;
 import es.api.findora.domain.model.Post;
 import es.api.findora.domain.port.out.PostRepository;
+import es.api.findora.infrastructure.mapper.CommentPersistenceMapper;
 import es.api.findora.infrastructure.mapper.PostMapper;
 import es.api.findora.infrastructure.persistence.entity.*;
 import es.api.findora.infrastructure.persistence.repository.PostRepositoryJPA;
@@ -25,6 +26,7 @@ public class PostRepositoryImpl implements PostRepository {
     private EntityManager entityManager;
     private final PostMapper postMapper;
     private final PostRepositoryJPA jpa;
+    private final CommentPersistenceMapper commentPersistenceMapper;
 
 
     @Override
@@ -49,7 +51,7 @@ public class PostRepositoryImpl implements PostRepository {
 
     @Override
     public Optional<Post> findById(Long id) {
-        return jpa.findById(id).map(postMapper::toDomain);
+        return jpa.findById(id).map(commentPersistenceMapper::toDomain);
     }
 
     @Override
